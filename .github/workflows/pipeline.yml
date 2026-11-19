@@ -78,8 +78,8 @@ jobs:
         id: p7
         run: |
           docker compose down
-          docker ps -a --filter "name=evaluacion2" --format '{{.Names}}' | grep . && { echo "Quedaron contenedores"; exit 1; } || true
-          docker volume inspect evaluacion2_datos-db > /dev/null || { echo "El volumen no existe"; exit 1; }
+          docker ps -a --filter "name=ayudantias1" --format '{{.Names}}' | grep . && { echo "Quedaron contenedores"; exit 1; } || true
+          docker volume inspect ayudantias1_datos-db > /dev/null || { echo "El volumen no existe"; exit 1; }
           echo "Volumen conservado"
 
       - name: "8. Persistencia después de recrear (15 pts)"
@@ -93,7 +93,7 @@ jobs:
         id: p9
         run: |
           docker compose down -v
-          docker volume inspect evaluacion2_datos-db > /dev/null 2>&1 && { echo "El volumen sigue existiendo"; exit 1; } || echo "Volumen eliminado"
+          docker volume inspect ayudantias1_datos-db > /dev/null 2>&1 && { echo "El volumen sigue existiendo"; exit 1; } || echo "Volumen eliminado"
 
       - name: "10. Reinicialización desde init.sql (10 pts)"
         id: p10
